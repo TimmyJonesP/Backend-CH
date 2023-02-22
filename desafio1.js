@@ -16,20 +16,17 @@ class ProductManager {
         this.products = []
     }
     addProduct(product) {
-
-        let newId
-        this.products.length == 0 ? newId = 1 : (newId = products[products.length - 1].id + 1)
-        newId = this.code
-        let newProduct = {...product, newId}
-        this.products.push(newProduct)
+        let newId = this.products.length == 0 ? 1 : this.products[this.products.length - 1].id + 1;
+        const newProduct = { ...product, id: newId };
+        this.products.push(newProduct);
     }
 
     getProducts(){
         return this.products
     }
 
-    getProductById(code){
-        let seeker = this.products.find(p => p.code == code) || "Not found, create one."
+    getProductById(id){
+        let seeker = this.products.find(p => p.id == id) || "Not found, create one."
         return seeker
     }
 }
@@ -39,4 +36,5 @@ let TiendaHelado = new ProductManager
 
 TiendaHelado.addProduct(cucurucho)
 TiendaHelado.getProductById(1)
-TiendaHelado.getProducts
+TiendaHelado.getProducts()
+console.log(TiendaHelado.getProducts())
