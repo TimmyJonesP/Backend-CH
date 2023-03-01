@@ -85,16 +85,13 @@ class ProductManager {
 let tiendaHelado = new ProductManager("./productos.txt");
 
 async function Try(){
-    try{
         await tiendaHelado.getProducts();
         await tiendaHelado.addProduct({title : "Producto Prueba", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
         await tiendaHelado.getProducts()
         await tiendaHelado.getProductById(1)
         await tiendaHelado.updateProduct(1, 'title', "Producto prueba cambiado.");
         await tiendaHelado.deleteProduct(1)
-    } catch(err){
-        throw new Error(`${err}`)
-    }
+
 }
 
 Try()
