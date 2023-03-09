@@ -32,7 +32,7 @@ class ProductManager {
             await fs.writeFile(this.path, JSON.stringify(data, null, 2))
             return newId
         } catch(err){
-            throw new Error(`no pudo guardarse ${s}`)
+            return (`no pudo guardarse ${s}`)
         }
 
     }
@@ -46,7 +46,7 @@ class ProductManager {
             return {id}
         }
         catch (err){
-            throw new Error(`${err}`)
+            return (`${err}`)
         }
     }
 
@@ -59,7 +59,7 @@ class ProductManager {
         const data = await this.getAll()
         let seeker = data.find(p => p.id == id)
         if (!seeker) {
-            throw new Error(`No se encontró el producto con ID: ${id}`)
+            return (`No se encontró el producto con ID: ${id}`)
         }
         return seeker
     }
@@ -74,10 +74,10 @@ class ProductManager {
             await fs.writeFile(this.path, JSON.stringify(data,null,2))
             return {i}
         } catch (err){
-            throw new Error(`${err}`)
+            return (`${err}`)
         }
     } else {
-        throw new Error(`No se encontró el producto con ID: ${id}`)
+        return (`No se encontró el producto con ID: ${id}`)
     }
     }
 }
@@ -87,11 +87,19 @@ let tiendaHelado = new ProductManager("./productos.txt");
 async function Try(){
         await tiendaHelado.getProducts();
         await tiendaHelado.addProduct({title : "Producto Prueba", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
+        await tiendaHelado.addProduct({title : "Producto Prueba-2", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
+        await tiendaHelado.addProduct({title : "Producto Prueba-3", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
+        await tiendaHelado.addProduct({title : "Producto Prueba-4", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
+        await tiendaHelado.addProduct({title : "Producto Prueba-5", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
+        await tiendaHelado.addProduct({title : "Producto Prueba-6", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
+        await tiendaHelado.addProduct({title : "Producto Prueba-7", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
+        await tiendaHelado.addProduct({title : "Producto Prueba-8", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
+        await tiendaHelado.addProduct({title : "Producto Prueba-9", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
+        await tiendaHelado.addProduct({title : "Producto Prueba-10", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
         await tiendaHelado.getProducts()
         await tiendaHelado.getProductById(1)
         await tiendaHelado.updateProduct(1, 'title', "Producto prueba cambiado.");
-        await tiendaHelado.deleteProduct(1)
 
 }
 
-Try()
+module.exports = ProductManager
