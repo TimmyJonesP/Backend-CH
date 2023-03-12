@@ -5,7 +5,7 @@ const app = express()
 
 const port = 3000
 
-const products = new ProductManager("../Manager/productos.txt")
+const products = new ProductManager("./productos.txt")
 
 app.use(express.urlencoded({extended:true}))
 
