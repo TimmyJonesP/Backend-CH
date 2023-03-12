@@ -82,24 +82,4 @@ class ProductManager {
     }
 }
 
-let tiendaHelado = new ProductManager("./productos.txt");
-
-async function Try(){
-        await tiendaHelado.getProducts();
-        await tiendaHelado.addProduct({title : "Producto Prueba", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
-        await tiendaHelado.addProduct({title : "Producto Prueba-2", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
-        await tiendaHelado.addProduct({title : "Producto Prueba-3", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
-        await tiendaHelado.addProduct({title : "Producto Prueba-4", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
-        await tiendaHelado.addProduct({title : "Producto Prueba-5", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
-        await tiendaHelado.addProduct({title : "Producto Prueba-6", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
-        await tiendaHelado.addProduct({title : "Producto Prueba-7", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
-        await tiendaHelado.addProduct({title : "Producto Prueba-8", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
-        await tiendaHelado.addProduct({title : "Producto Prueba-9", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
-        await tiendaHelado.addProduct({title : "Producto Prueba-10", description: "Este es un producto Prueba", price: 200, thumbnail: "Sin imagen", code: "abc", stock: 25});
-        await tiendaHelado.getProducts()
-        await tiendaHelado.getProductById(1)
-        await tiendaHelado.updateProduct(1, 'title', "Producto prueba cambiado.");
-
-}
-
 module.exports = ProductManager
