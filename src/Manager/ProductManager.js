@@ -16,9 +16,11 @@ class ProductManager {
     async getAll() {
         try{
             const data = await fs.readFile(this.path, "utf-8");
+            console.log(data)
             return JSON.parse(data);
         }catch (err) {
-            return  []
+            console.error(err)
+            return []
         }
     }
 
