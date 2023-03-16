@@ -88,5 +88,21 @@
     "code": "abc",
     "stock": 25,
     "id": 10
+  },
+  {
+    "title": "Producto Prueba POST",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 11
+  },
+  {
+    "id": 12
+  },
+  {
+    "id": 13
   }
 ]
