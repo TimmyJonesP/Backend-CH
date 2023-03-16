@@ -98,11 +98,5 @@
     "category": "test",
     "thumbnails": [],
     "id": 11
-  },
-  {
-    "id": 12
-  },
-  {
-    "id": 13
   }
 ]
