@@ -98,5 +98,95 @@
     "category": "test",
     "thumbnails": [],
     "id": 11
+  },
+  {
+    "title": "Producto Prueba POST2",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 12
+  },
+  {
+    "title": "Producto Prueba POST3",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 13
+  },
+  {
+    "title": "Producto Prueba POST4",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 14
+  },
+  {
+    "title": "Producto Prueba POST5",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 15
+  },
+  {
+    "title": "Producto Prueba POST6",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 16
+  },
+  {
+    "title": "Producto Prueba POST7",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 17
+  },
+  {
+    "title": "Producto Prueba POST8",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 18
+  },
+  {
+    "title": "Producto Prueba POST9",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 19
+  },
+  {
+    "title": "Producto Prueba POST10",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 20
   }
 ]

@@ -1,25 +1,31 @@
 const express = require("express")
-const productRouter = require("../router/productsRouter")
-const cartRouter = require("../router/cartRouter")
 const handlebars = require("express-handlebars")
 const { Server } = require("socket.io")
+const router = require("./routesExtended")
 
 const app = express()
 const port = 3000
+
 app.use(express.json())
-app.use("/api/productos", productRouter)
-app.use('/api/cart', cartRouter)
 app.use(express.urlencoded({extended:true}))
 app.use(express.static(__dirname+"/public"))
-app.engine("handlebars", handlebars.engine())
-app.set("views", __dirname+"/view")
-
-const io = new Server(httpServer)
+app.engine("handlebars", handlebars.engine());
+app.set("view engine", "handlebars");
+app.set("views", __dirname+"/views")
 
 const httpServer = app.listen(port, () =>{
     console.log(`Server running at port ${port}`)
 })
 
+const io = new Server(httpServer)
+router(app)
+
 io.on("connection", socket => {
     console.log(`Cliente conectado bajo el ID: ${socket.id} `)
+    
+    socket.on("productosActualizados", () => {
+        location.reload();
+    })
 })
+
+module.exports = { io }
