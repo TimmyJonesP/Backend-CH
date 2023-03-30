@@ -4,13 +4,12 @@ socket.on("update", (data) => {
     updateProducts(data);
 });
 
-socket.on("newProductAdded", (newProductId) => {
-    fetch(`/products/${newProductId}`)
-    .then(response => response.json())
-    .then(product => {
-        const productsList = document.querySelector("#products-list");
-        const newProduct = document.createElement("li");
-        newProduct.textContent = product.name;
-        productsList.appendChild(newProduct);
-    }).catch(error => console.log(error));
+socket.on("productosActualizados", (data) => {
+    const productList = document.querySelector("#product-list");
+    productList.innerHTML = "";
+    data.forEach(product => {
+        const li = document.createElement("li");
+        li.innerText = `${product.title} - ${product.price}`;
+        productList.appendChild(li);
+    });
 });

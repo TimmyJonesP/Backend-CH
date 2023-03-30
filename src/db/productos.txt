@@ -188,5 +188,125 @@
     "category": "test",
     "thumbnails": [],
     "id": 20
+  },
+  {
+    "title": "Producto Prueba POST11",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 21
+  },
+  {
+    "title": "Producto Prueba POST13",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 22
+  },
+  {
+    "title": "Producto Prueba POST12",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 23
+  },
+  {
+    "title": "Producto Prueba put",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 24
+  },
+  {
+    "title": "Producto Prueba put2",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 25
+  },
+  {
+    "title": "Producto Prueba put3",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 26
+  },
+  {
+    "title": "Producto Prueba put3",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 27
+  },
+  {
+    "title": "Producto Prueba put4",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 28
+  },
+  {
+    "title": "Producto Prueba put5",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 29
+  },
+  {
+    "title": "Producto Prueba put6",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 30
+  },
+  {
+    "title": "Producto Prueba put7",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 31
+  },
+  {
+    "title": "Producto Prueba put8",
+    "description": "asd",
+    "code": "asd",
+    "price": 200,
+    "status": true,
+    "category": "test",
+    "thumbnails": [],
+    "id": 32
   }
 ]

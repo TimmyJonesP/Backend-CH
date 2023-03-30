@@ -23,9 +23,13 @@ router(app)
 io.on("connection", socket => {
     console.log(`Cliente conectado bajo el ID: ${socket.id} `)
     
-    socket.on("productosActualizados", () => {
-        location.reload();
-    })
+    socket.on("productosActualizados", (data) => {
+        const productList = document.querySelector("#product-list");
+        productList.innerHTML = "";
+        data.forEach(product => {
+            const li = document.createElement("li");
+            li.innerText = `${product.title} - ${product.price}`;
+            productList.appendChild(li);
+        });
+    });
 })
-
-module.exports = { io }
