@@ -1,37 +1,43 @@
 const { Router } = require("express")
-const CartManager = require("../Manager/CartManager")
+const Cart = require("../models/cart.model")
 
 const router = Router()
-const carts = new CartManager("../../db/cart.txt")
 
 router.post("/", async (req, res) => {
     const newCart = { products: [] };
-    const cartId = await carts.addCart(newCart);
-    res.json({ id: cartId });
+    const cart = new Cart(newCart);
+    await cart.save();
+    res.json({ id: cart._id });
 });
 
 router.get("/:cid", async (req, res) => {
-    const cid = req.params.cid
-    const cart = await carts.getCartById(cid)
-    res.json(cart)
+    try {
+        const cart = await Cart.findById(req.params.cid);
+        res.json(cart);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ status: 'error', message: 'Server error' });
+    }
 })
 
 router.post("/:cid/product/:pid", async (req, res) => {
-    const cid = req.params.cid
-    const cart = await carts.getCartById(cid)
-    const pid = req.params.pid
+    try {
+        const cart = await Cart.findById(req.params.cid);
+        const pid = req.params.pid;
+        const productIndex = cart.products.findIndex((p) => p.product === pid);
 
-    const productIndex = cart.products.findIndex((p) => p.product === pid)
+        if (productIndex !== -1) {
+            cart.products[productIndex].quantity += 1;
+        } else {
+            const newProduct = { product: pid, quantity: 1 }
+            cart.products.push(newProduct)
+        }
 
-    if (productIndex !== -1) {
-        cart.products[productIndex].quantity += 1
-        await carts.updateCart(cart)
-        res.json(cart)
-    } else {
-        const newProduct = { product: pid, quantity: 1 }
-        cart.products.push(newProduct)
-        await carts.updateCart(cart)
-        res.json(cart)
+        await cart.save();
+        res.json(cart);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ status: 'error', message: 'Server error' });
     }
 });
 
@@ -79,8 +85,12 @@ router.put('/:cid/product/:pid', async (req, res) => {
 
 router.delete('/:cid', async (req, res) => {
     try {
-        const cart = await Cart.findByIdAndDelete(req.params.cid);
-        res.json({ status: 'success', message: 'Cart deleted', cart });
+        const cartId = req.params.cid;
+        const deletedCart = await Cart.findByIdAndDelete(cartId);
+        if (!deletedCart) {
+            return res.status(404).json({ status: 'error', message: 'Cart not found' });
+        }
+        res.json({ status: 'success', message: 'Cart deleted', cart: deletedCart });
     } catch (error) {
         console.error(error);
         res.status(500).json({ status: 'error', message: 'Server error' });
