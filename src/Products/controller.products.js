@@ -1,8 +1,5 @@
 const { Router } = require("express")
-const ProductManager = require("../Manager/ProductManager");
 const Products = require('../models/products.model')
-
-const products = new ProductManager("../../db/productos.txt")
 const router = Router()
 
 router.get('/', async (req, res) => {
@@ -74,30 +71,69 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post("/", async (req, res) => {
-    const newProduct = req.body;
+router.post('/', async (req, res) => {
+    try {
+        const newProduct = new Products(req.body);
+        await newProduct.save();
+        res.json(newProduct);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    }
+});
 
-    const newProductId = await products.addProduct(newProduct)
-    res.json({ message: "Producto Agregado", productId: newProductId })
-})
+router.get('/:id', async (req, res) => {
+    try {
+        const product = await Products.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        res.json(product);
+    } catch (error) {
+        console.error(error.message);
+        if (error.kind === 'ObjectId') {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        res.status(500).send('Server Error');
+    }
+});
 
-router.get("/:pid", async (req, res) => {
-    const pid = req.params.pid
-    const product = await products.getProductById(pid)
-    res.json(product)
-})
+router.put('/:id', async (req, res) => {
+    try {
+        const product = await Products.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        const updatedProduct = await Products.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+        res.json(updatedProduct);
+    } catch (error) {
+        console.error(error.message);
+        if (error.kind === 'ObjectId') {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        res.status(500).send('Server Error');
+    }
+});
 
-router.put("/:pid", async (req, res) => {
-    const pid = req.params.pid
-    const updatedProduct = { ...req.body, id: pid }
-    await products.updateProduct(updatedProduct)
-    res.json({ message: `Producto de id ${pid} actualizado correctamente!` })
-})
-
-router.delete("/:pid", async (req, res) => {
-    const pid = req.params.pid
-    await products.deleteProduct(pid)
-    res.json({ message: `Producto de id ${pid} eliminado correctamente!` })
-})
+router.delete('/:id', async (req, res) => {
+    try {
+        const product = await Products.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        await product.remove();
+        res.json({ message: 'Product removed' });
+    } catch (error) {
+        console.error(error.message);
+        if (error.kind === 'ObjectId') {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        res.status(500).send('Server Error');
+    }
+});
 
 module.exports = router;
